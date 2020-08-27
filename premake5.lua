@@ -57,11 +57,11 @@ project "OpenGL"
 		"GLFW",
 		"GLAD"
 	}
-	
+
 
 
 	filter "system:windows"
-		
+
 		systemversion "latest"
 
 		defines
@@ -69,25 +69,37 @@ project "OpenGL"
 			"_GLFW_WIN32",
 			"_WIND32",
 			"_WIND64",
-			"HZ_BUILD_DLL",
 			"GLFW_INCLUDE_NONE",
 			"_CRT_SECURE_NO_WARNINGS"
 		}
-		
+
 
 	filter "configurations:Debug"
-		defines "HZ_DEBUG"
+		defines "G_DEBUG"
 		runtime "Debug"
 		symbols "on"
 
 	filter "configurations:Release"
-		defines "HZ_RELEASE"
+		defines "G_RELEASE"
 		runtime "Release"
 		optimize "on"
 		symbols "on"
 
 	filter "configurations:Dist"
-		defines "HZ_DIST"
+		defines "G_DIST"
 		runtime "Release"
 		optimize "on"
 		symbols "on"
+
+	filter "system:macosx"
+    defines {
+      "G_MAC",
+      "__APPLE__"
+    }
+
+    links {
+      "OpenGL.framework",
+      "Cocoa.framework",
+      "IOKit.framework",
+      "CoreFoundation.framework"
+    }

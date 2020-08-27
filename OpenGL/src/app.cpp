@@ -3,6 +3,8 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 
+
+
 void processInput(GLFWwindow* window)
 {
 	if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
@@ -21,6 +23,11 @@ int main() {
 	//* Initialize the library 
 	if (!glfwInit())
 		return -1;
+    
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
 	//* Create a windowed mode window and its OpenGL context 
 	window = glfwCreateWindow(1280, 960, "Hello World", NULL, NULL);
@@ -172,6 +179,7 @@ int main() {
 
 		float timeVal = glfwGetTime();
 		float greenValue = (sin(timeVal) / 2.0f) + 0.5f;
+        //float greenValue = 1.0f * timeVal;
 		glUseProgram(shaderProgram);
 		int vertexColorLocation = glGetUniformLocation(shaderProgram, "ourColor");
 		
@@ -193,7 +201,7 @@ int main() {
 
 	glfwTerminate();
 	
-	system("pause");
+	//system("pause");
 	//*/
-	//return 0;
+	return 0;
 }

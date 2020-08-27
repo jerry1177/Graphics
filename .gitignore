@@ -6,3 +6,5 @@ bin-int/
 **.filters
 **.user
 OpenGL/vendor/GLFW/docs/
+**.xcworkspace/
+**.xcodeproj/
